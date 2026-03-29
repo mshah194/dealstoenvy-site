@@ -268,10 +268,5 @@
     setLastUpdated();
 
     const config = window.DEALS_SHEET_CONFIG || {};
-    if (config.csvUrl && config.csvUrl.indexOf("PASTE_GOOGLE_SHEETS_CSV_URL_HERE") === -1) {
-      showFeedStatus("Connected to your Google Sheet feed.", true);
-    } else {
-      showFeedStatus("Google Sheet not connected yet. Paste your published CSV URL into assets/js/sheet-config.js once, then your sheet will drive the site.");
-    }
   });
 })();
