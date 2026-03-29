@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DealsToEnvy | Google Sheet Powered Deals</title>
+  <meta name="description" content="DealsToEnvy is a Google Sheet powered affiliate deals website for Amazon and Walmart offers." />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="container nav">
+      <a class="logo" href="index.html">Deals<span>ToEnvy</span></a>
+      <nav class="nav-links">
+        <a class="active" href="index.html">Home</a>
+        <a href="amazon-deals.html">Amazon Deals</a>
+        <a href="walmart-deals.html">Walmart Deals</a>
+        <a href="affiliate-disclosure.html">Disclosure</a>
+        <a href="privacy-policy.html">Privacy</a>
+        <a href="terms-and-conditions.html">Terms</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">Google Sheet workflow</div>
+          <h1 data-site-title>Daily Deals Worth Clicking</h1>
+          <p data-site-subtitle>
+            Your site can now pull deals from one Google Sheet, so you do not have to manually update homepage cards and retailer pages every day.
+          </p>
+          <div class="button-row">
+            <a class="btn btn-primary" href="amazon-deals.html">Browse Amazon Deals</a>
+            <a class="btn btn-secondary" href="walmart-deals.html">Browse Walmart Deals</a>
+          </div>
+        </div>
+        <aside class="panel">
+          <h3>How this setup works</h3>
+          <ul>
+            <li>Edit rows only in Google Sheets.</li>
+            <li>Homepage sections update from the same feed.</li>
+            <li>Amazon and Walmart pages stay separate automatically.</li>
+            <li>Use SortOrder to control what shows first.</li>
+            <li>Use HomepageFeature to choose deals for the homepage.</li>
+          </ul>
+          <a class="btn btn-ghost" href="README.txt">Quick setup notes</a>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="notice" data-feed-status></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <h2>Homepage deal flow</h2>
+          <div class="small">Edit rows in Google Sheets, not in HTML</div>
+        </div>
+        <div class="featured-strip">
+          <div class="highlight">
+            <span class="eyebrow">Featured today</span>
+            <h2 style="margin-top:0;">Put your strongest offers on top and let the sheet do the rest.</h2>
+            <p class="lead">Mark a deal as HomepageFeature and give it a low SortOrder number. That lets your homepage feel curated while the retailer pages keep the full list.</p>
+            <div class="chip-row">
+              <span class="chip active">Homepage feature</span>
+              <span class="chip">Amazon list</span>
+              <span class="chip">Walmart list</span>
+              <span class="chip">Live affiliate link</span>
+            </div>
+          </div>
+          <div class="callout">
+            <h3 style="margin-top:0;">One-time setup</h3>
+            <ol class="number-list">
+              <li>Upload the spreadsheet template to Google Sheets.</li>
+              <li>Publish the <strong>Deals_Export</strong> tab as CSV.</li>
+              <li>Paste the CSV URL into <strong>assets/js/sheet-config.js</strong>.</li>
+              <li>Upload the updated site files to your host.</li>
+            </ol>
+            <p>After that, daily posting happens only inside your sheet.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <h2>Featured Amazon picks</h2>
+          <a class="small" href="amazon-deals.html">View full Amazon page</a>
+        </div>
+        <div id="featured-amazon-grid" class="mini-grid"></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <h2>Featured Walmart picks</h2>
+          <a class="small" href="walmart-deals.html">View full Walmart page</a>
+        </div>
+        <div id="featured-walmart-grid" class="mini-grid"></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="kpi-grid">
+          <div class="kpi">
+            <strong>1 Sheet</strong>
+            <div>All daily deal edits happen in one Google Sheet tab.</div>
+          </div>
+          <div class="kpi">
+            <strong>3 Pages</strong>
+            <div>Homepage, Amazon page, and Walmart page all update from the same feed.</div>
+          </div>
+          <div class="kpi">
+            <strong>0 HTML edits</strong>
+            <div>Once connected, you should not need to touch the page markup for normal daily posting.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <h3>DealsToEnvy</h3>
+        <p>A Google Sheet powered affiliate site setup for easier daily deal posting.</p>
+      </div>
+      <div class="footer-links">
+        <a href="amazon-deals.html">Amazon Deals</a>
+        <a href="walmart-deals.html">Walmart Deals</a>
+        <a href="affiliate-disclosure.html">Affiliate Disclosure</a>
+        <a href="privacy-policy.html">Privacy Policy</a>
+        <a href="terms-and-conditions.html">Terms &amp; Conditions</a>
+      </div>
+    </div>
+  </footer>
+  <script src="assets/js/sheet-config.js"></script>
+  <script src="assets/js/deals.js"></script>
+  <script src="assets/js/site.js"></script>
+</body>
+</html>

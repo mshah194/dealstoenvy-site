@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DealsToEnvy | Walmart Deals</title>
+  <meta name="description" content="Walmart deals page for DealsToEnvy powered by your Google Sheet feed." />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="container nav">
+      <a class="logo" href="index.html">Deals<span>ToEnvy</span></a>
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="amazon-deals.html">Amazon Deals</a>
+        <a class="active" href="walmart-deals.html">Walmart Deals</a>
+        <a href="affiliate-disclosure.html">Disclosure</a>
+        <a href="privacy-policy.html">Privacy</a>
+        <a href="terms-and-conditions.html">Terms</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="container page-shell">
+        <span class="eyebrow">Walmart Deals</span>
+        <h1 class="page-title">Walmart deals powered by your Google Sheet.</h1>
+        <p class="lead">Keep Walmart links separate in the same sheet so this page stays organized and easy to browse.</p>
+        <div class="filter-bar">
+          <input id="walmart-search" class="search-input" type="search" placeholder="Search Walmart deals by keyword..." />
+          <a class="btn btn-secondary" href="affiliate-disclosure.html">View disclosure</a>
+        </div>
+        <div class="small">Last updated: <span data-last-updated></span></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="notice" data-feed-status></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <h2>Deal grid</h2>
+          <div class="small">Source: Google Sheets feed</div>
+        </div>
+        <div id="walmart-deals-grid" class="cards"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div><h3>DealsToEnvy</h3><p>Use this as your Walmart retailer page and seasonal deals hub.</p></div>
+      <div class="footer-links"><a href="index.html">Home</a><a href="amazon-deals.html">Amazon Deals</a><a href="privacy-policy.html">Privacy</a></div>
+    </div>
+  </footer>
+  <script src="assets/js/sheet-config.js"></script>
+  <script src="assets/js/deals.js"></script>
+  <script src="assets/js/site.js"></script>
+</body>
+</html>
