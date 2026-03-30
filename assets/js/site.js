@@ -407,4 +407,7 @@ setLastUpdated();
 
 });
 
+window.loadDeals = loadDeals;
+window.dealCard = dealCard;
+window.formatCurrency = formatCurrency;
 })();
