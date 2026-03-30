@@ -130,33 +130,33 @@ return `<div class="${cls}">Clip coupon on Amazon</div>`;
 return `<div class="${cls}">Use Code: <strong>${escapeHtml(deal.code)}</strong></div>`;
 }
 
-function dealCard(deal){
+function dealCard(deal) {
+  const searchable = `${deal.title} ${deal.category} ${deal.badge} ${deal.code} ${deal.note}`.toLowerCase();
+  const price = formatCurrency(deal.price);
+  const oldPrice = formatCurrency(deal.old_price);
 
-const price=formatCurrency(deal.price);
-const oldPrice=formatCurrency(deal.old_price);
+  return `
+  <article class="card deal-card" data-title="${escapeHtml(searchable)}">
+    <img class="card-media" src="${escapeHtml(deal.image)}" alt="${escapeHtml(deal.title)}">
+    <div class="card-body">
 
-return`
-<article class="card deal-card">
-<img class="card-media" src="${escapeHtml(deal.image)}">
-<div class="card-body">
+      <span class="badge">${escapeHtml(deal.badge || deal.category)}</span>
+      <h3>${escapeHtml(deal.title)}</h3>
 
-<span class="badge">${escapeHtml(deal.badge||deal.category)}</span>
-<h3>${escapeHtml(deal.title)}</h3>
+      <div class="price-row">
+        <span class="price">${price}</span>
+        ${oldPrice ? `<span class="old-price">${oldPrice}</span>` : ""}
+      </div>
 
-<div class="price-row">
-<span class="price">${price}</span>
-${oldPrice?`<span class="old-price">${oldPrice}</span>`:""}
-</div>
+      ${promoMarkup(deal, "promo-code")}
 
-${promoMarkup(deal,"promo-code")}
+      <a class="btn btn-primary" href="${escapeHtml(deal.link)}" target="_blank" rel="nofollow sponsored noopener">
+        View deal
+      </a>
 
-<a class="btn btn-primary" href="${escapeHtml(deal.link)}" target="_blank" rel="nofollow sponsored noopener">
-View deal
-</a>
-
-</div>
-</article>
-`;
+    </div>
+  </article>
+  `;
 }
 
 function miniCard(deal){
