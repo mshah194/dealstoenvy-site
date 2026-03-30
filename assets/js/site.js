@@ -333,8 +333,8 @@
     setHeroCopy(site);
     renderDeals("amazon-deals-grid", amazon);
     renderDeals("walmart-deals-grid", walmart);
-    renderMiniDeals("featured-amazon-grid", featuredDeals(deals, "Amazon", Number(site.featuredAmazonCount || 3)));
-    renderMiniDeals("featured-walmart-grid", featuredDeals(deals, "Walmart", Number(site.featuredWalmartCount || 2)));
+    renderMiniDeals("featured-amazon-grid", featuredDeals(deals, "Amazon"));
+    renderMiniDeals("featured-walmart-grid", featuredDeals(deals, "Walmart"));
     enableSearch("amazon-search", "amazon-deals-grid");
     enableSearch("walmart-search", "walmart-deals-grid");
     setLastUpdated();
