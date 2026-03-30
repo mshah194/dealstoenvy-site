@@ -326,6 +326,8 @@ function renderHeaderSuggestions(matches, query) {
       <a
         class="header-search-suggestion"
         href="${escapeHtml(deal.link)}"
+        target="_blank"
+        rel="nofollow sponsored noopener"
       >
         <div class="header-search-suggestion-title">${escapeHtml(deal.title)}</div>
         <div class="header-search-suggestion-meta">
