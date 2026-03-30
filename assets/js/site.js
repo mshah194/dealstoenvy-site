@@ -192,7 +192,7 @@
     const codeText = String(deal.code).trim().toUpperCase();
 
     if (codeText === "CLIP COUPON" || codeText === "AMAZON COUPON") {
-      couponHtml = `<div class="coupon-pill">Clip Coupon on Amazon</div>`;
+      couponHtml = `<div class="coupon-pill">Clip coupon on Amazon</div>`;
     } else {
       couponHtml = `<div class="coupon-pill">Use Code: <strong>${escapeHtml(deal.code)}</strong></div>`;
     }
@@ -204,17 +204,12 @@
       <div class="card-body">
         <span class="badge">${escapeHtml(deal.badge || deal.category)}</span>
         <h3>${escapeHtml(deal.title)}</h3>
-
         <div class="price-row">
           <span class="price">${escapeHtml(price)}</span>
           ${oldPrice ? `<span class="old-price">${escapeHtml(oldPrice)}</span>` : ""}
         </div>
-
         ${couponHtml}
-
-        <a class="btn btn-secondary" href="${escapeHtml(deal.link)}" target="_blank" rel="nofollow sponsored noopener">
-          Open deal
-        </a>
+        <a class="btn btn-secondary" href="${escapeHtml(deal.link)}" target="_blank" rel="nofollow sponsored noopener">Open deal</a>
       </div>
     </article>
   `;
