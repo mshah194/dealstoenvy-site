@@ -222,33 +222,35 @@
   }
 
   function renderMiniDeals(targetId, deals) {
-    const target = document.getElementById(targetId);
-    if (!target) return;
+  const target = document.getElementById(targetId);
+  if (!target) return;
 
-    if (!deals.length) {
-      target.innerHTML = `<div class="notice">No featured deals marked yet.</div>`;
-      return;
-    }
-
-    const sliderId = `${targetId}-slider`;
-    const trackId = `${targetId}-track`;
-    const prevId = `${targetId}-prev`;
-    const nextId = `${targetId}-next`;
-
-    target.innerHTML = `
-      <div class="featured-slider" id="${sliderId}">
-        <button class="featured-arrow featured-arrow-left" id="${prevId}" aria-label="Scroll left">&#10094;</button>
-        <div class="featured-viewport">
-          <div class="featured-track" id="${trackId}">
-            ${deals.map(miniCard).join("")}
-          </div>
-        </div>
-        <button class="featured-arrow featured-arrow-right" id="${nextId}" aria-label="Scroll right">&#10095;</button>
-      </div>
-    `;
-
-    initFeaturedSlider(trackId, prevId, nextId);
+  if (!deals.length) {
+    target.innerHTML = `<div class="notice">No featured deals marked yet.</div>`;
+    return;
   }
+
+  const sliderId = `${targetId}-slider`;
+  const trackId = `${targetId}-track`;
+  const prevId = `${targetId}-prev`;
+  const nextId = `${targetId}-next`;
+
+  target.innerHTML = `
+    <div class="featured-slider" id="${sliderId}">
+      <button class="featured-arrow featured-arrow-left" id="${prevId}" aria-label="Scroll left">&#10094;</button>
+
+      <div class="featured-viewport">
+        <div class="featured-track" id="${trackId}">
+          ${deals.map(miniCard).join("")}
+        </div>
+      </div>
+
+      <button class="featured-arrow featured-arrow-right" id="${nextId}" aria-label="Scroll right">&#10095;</button>
+    </div>
+  `;
+
+  initFeaturedSlider(sliderId, trackId, prevId, nextId);
+}
   function initFeaturedSlider(trackId, prevId, nextId) {
   const track = document.getElementById(trackId);
   const prevBtn = document.getElementById(prevId);
