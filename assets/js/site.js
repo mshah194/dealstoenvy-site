@@ -158,7 +158,33 @@ function dealCard(deal) {
   </article>
   `;
 }
+function enableSearch(inputId, containerId) {
 
+  const input = document.getElementById(inputId);
+  const container = document.getElementById(containerId);
+
+  if (!input || !container) return;
+
+  input.addEventListener("input", () => {
+
+    const q = input.value.trim().toLowerCase();
+
+    container.querySelectorAll(".deal-card").forEach(card => {
+
+      const searchable =
+        (card.innerText || "").toLowerCase();
+
+      if (searchable.includes(q)) {
+        card.style.display = "";
+      } else {
+        card.style.display = "none";
+      }
+
+    });
+
+  });
+
+}
 function miniCard(deal){
 
 const price=formatCurrency(deal.price);
