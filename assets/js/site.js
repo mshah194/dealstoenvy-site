@@ -323,7 +323,10 @@ function renderHeaderSuggestions(matches, query) {
     const oldPrice = formatCurrency(deal.old_price);
 
     return `
-      <a class="header-search-suggestion" href="search.html?q=${encodeURIComponent(query)}">
+      <a
+        class="header-search-suggestion"
+        href="${escapeHtml(deal.link)}"
+      >
         <div class="header-search-suggestion-title">${escapeHtml(deal.title)}</div>
         <div class="header-search-suggestion-meta">
           ${escapeHtml(retailer)}${price ? ` • ${escapeHtml(price)}` : ""}${oldPrice ? ` • Was ${escapeHtml(oldPrice)}` : ""}
