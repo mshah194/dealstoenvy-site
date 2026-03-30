@@ -8,32 +8,27 @@
   <link rel="stylesheet" href="assets/css/styles.css" />
 </head>
 <body>
-  <header class="topbar">
-  <div class="container nav">
+<form class="header-search" action="search.html" method="get" autocomplete="off">
 
-    <a href="index.html" class="logo">Deals<span>ToEnvy</span></a>
+  <div class="header-search-wrap">
 
-    <form class="header-search" action="search.html" method="get" autocomplete="off">
-      <div class="header-search-wrap">
-        <input
-          type="text"
-          name="q"
-          id="header-search-input"
-          placeholder="Search deals..."
-          class="header-search-input"
-        />
-        <div id="header-search-suggestions" class="header-search-suggestions"></div>
-      </div>
-    </form>
+    <input
+      type="text"
+      name="q"
+      id="header-search-input"
+      placeholder="Search deals..."
+      class="header-search-input"
+    />
 
-    <nav class="nav-links">
-      <a href="index.html">Home</a>
-      <a href="amazon-deals.html">Amazon Deals</a>
-      <a href="walmart-deals.html">Walmart Deals</a>
-    </nav>
+    <button class="header-search-button" type="submit">
+      🔍
+    </button>
+
+    <div id="header-search-suggestions" class="header-search-suggestions"></div>
 
   </div>
-</header>
+
+</form>
   <main>
     <section class="section">
       <div class="container">
