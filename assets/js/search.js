@@ -1,46 +1,53 @@
-function getQuery() {
+function getSearchKeyword() {
   const params = new URLSearchParams(window.location.search);
-  return params.get("q")?.toLowerCase() || "";
+  return (params.get("q") || "").trim().toLowerCase();
 }
 
-async function loadSearchResults() {
+function buildSearchableText(deal) {
+  return [
+    deal.title,
+    deal.category,
+    deal.badge,
+    deal.code,
+    deal.note,
+    deal.retailer,
+    deal.status
+  ]
+    .join(" ")
+    .toLowerCase();
+}
 
-  const keyword = getQuery();
-
+async function runSearchPage() {
+  const keyword = getSearchKeyword();
   const label = document.getElementById("search-label");
   const resultsContainer = document.getElementById("search-results");
 
+  if (!resultsContainer) return;
+
   if (!keyword) {
-    label.textContent = "No keyword entered.";
+    if (label) label.textContent = "Enter a keyword to search all deals.";
+    resultsContainer.innerHTML = `<div class="notice">No search keyword entered.</div>`;
     return;
   }
 
-  label.textContent = 'Showing results for "' + keyword + '"';
+  if (label) label.textContent = `Showing results for "${keyword}"`;
 
-  const deals = await loadDeals();   // comes from deals.js
-
-  const results = deals.filter(deal => {
-    const text = (
-      deal.title +
-      " " +
-      (deal.note || "") +
-      " " +
-      (deal.category || "")
-    ).toLowerCase();
-
-    return text.includes(keyword);
-  });
-
-  if (results.length === 0) {
-    resultsContainer.innerHTML =
-      "<p>No deals found.</p>";
+  if (typeof window.loadDeals !== "function" || typeof window.dealCard !== "function") {
+    resultsContainer.innerHTML = `<div class="notice">Search is not ready yet. Please refresh the page.</div>`;
     return;
   }
 
-  results.forEach(deal => {
-    const card = createDealCard(deal);
-    resultsContainer.appendChild(card);
-  });
+  const payload = await window.loadDeals();
+  const deals = Array.isArray(payload.deals) ? payload.deals : [];
+
+  const matches = deals.filter(deal => buildSearchableText(deal).includes(keyword));
+
+  if (!matches.length) {
+    resultsContainer.innerHTML = `<div class="notice">No deals found for "${keyword}".</div>`;
+    return;
+  }
+
+  resultsContainer.innerHTML = matches.map(deal => window.dealCard(deal)).join("");
 }
 
-document.addEventListener("DOMContentLoaded", loadSearchResults);
+document.addEventListener("DOMContentLoaded", runSearchPage);
