@@ -384,3 +384,45 @@ h1 {
     font-size: 18px;
   }
 }
+/* Make homepage featured slider sections use full width */
+#featured-amazon-grid,
+#featured-walmart-grid {
+  width: 100%;
+  max-width: 100%;
+  grid-column: 1 / -1;
+}
+
+/* If these sections are inside a 2-column wrapper, force full width */
+.featured-strip > #featured-amazon-grid,
+.featured-strip > #featured-walmart-grid,
+.mini-grid > #featured-amazon-grid,
+.mini-grid > #featured-walmart-grid {
+  grid-column: 1 / -1;
+  width: 100%;
+}
+
+/* Keep the slider stretched across the full available row */
+.featured-slider {
+  width: 100%;
+}
+
+.featured-viewport {
+  width: 100%;
+  max-width: 100%;
+}
+
+.featured-track {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 20px;
+  width: max-content;
+}
+
+/* Optional: if homepage wrapper itself is only 2 columns for these sections, make it one column */
+.featured-strip {
+  grid-template-columns: 1fr;
+}
+
+.mini-grid {
+  grid-template-columns: 1fr;
+}
