@@ -46,24 +46,24 @@
   }
 
   function normalizeDeal(raw) {
-    return {
-      active: raw.active === undefined ? true : parseBool(raw.active),
-      retailer: String(raw.retailer || "").trim(),
-      homepage_feature: raw.homepage_feature === undefined ? false : parseBool(raw.homepage_feature),
-      sort_order: parseNumber(raw.sort_order) ?? 9999,
-      title: String(raw.title || "").trim(),
-      price: raw.price,
-      old_price: raw.old_price !== undefined ? raw.old_price : raw.oldPrice,
-      save: raw.save || "",
-      category: String(raw.category || "").trim(),
-      badge: String(raw.badge || raw.category || "").trim(),
-      code: String(raw.code || "").trim(),
-      status: String(raw.status || "").trim(),
-      note: String(raw.note || "").trim(),
-      link: String(raw.link || "#").trim() || "#",
-      image: String(raw.image || "").trim()
-    };
-  }
+  return {
+    active: raw.active === undefined ? true : parseBool(raw.active),
+    retailer: String(raw.retailer || "").trim(),
+    homepage_feature: raw.homepage_feature === undefined ? false : parseBool(raw.homepage_feature),
+    sort_order: parseNumber(raw.sort_order) ?? 9999,
+    title: String(raw.title || "").trim(),
+    price: raw.price,
+    old_price: raw.old_price !== undefined ? raw.old_price : raw.oldPrice,
+    save: raw.save || "",
+    category: String(raw.category || "").trim(),
+    badge: String(raw.badge || raw.category || "").trim(),
+    code: String(raw.code || raw.coupon || raw.promo || raw.promo_code || "").trim(),
+    status: String(raw.status || "").trim(),
+    note: String(raw.note || "").trim(),
+    link: String(raw.link || "#").trim() || "#",
+    image: String(raw.image || "").trim()
+  };
+}
 
   function parseCsv(text) {
     const rows = [];
