@@ -186,9 +186,17 @@
   const price = formatCurrency(deal.price);
   const oldPrice = formatCurrency(deal.old_price);
 
-  const couponHtml = deal.code
-    ? `<div class="coupon-pill">Use Code: <strong>${escapeHtml(deal.code)}</strong></div>`
-    : "";
+  let couponHtml = "";
+
+  if (deal.code) {
+    const codeText = String(deal.code).trim().toUpperCase();
+
+    if (codeText === "CLIP COUPON" || codeText === "AMAZON COUPON") {
+      couponHtml = `<div class="coupon-pill">Clip Coupon on Amazon</div>`;
+    } else {
+      couponHtml = `<div class="coupon-pill">Use Code: <strong>${escapeHtml(deal.code)}</strong></div>`;
+    }
+  }
 
   return `
     <article class="mini-card">
