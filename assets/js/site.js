@@ -185,18 +185,28 @@
   function miniCard(deal) {
   const price = formatCurrency(deal.price);
   const oldPrice = formatCurrency(deal.old_price);
+
+  const couponHtml = deal.code
+    ? `<div class="coupon-pill">Use Code: <strong>${escapeHtml(deal.code)}</strong></div>`
+    : "";
+
   return `
     <article class="mini-card">
       <img class="card-media" src="${escapeHtml(deal.image || 'https://via.placeholder.com/800x600?text=Deal')}" alt="${escapeHtml(deal.title)}">
       <div class="card-body">
         <span class="badge">${escapeHtml(deal.badge || deal.category)}</span>
         <h3>${escapeHtml(deal.title)}</h3>
+
         <div class="price-row">
           <span class="price">${escapeHtml(price)}</span>
           ${oldPrice ? `<span class="old-price">${escapeHtml(oldPrice)}</span>` : ""}
         </div>
-        ${deal.code ? `<div class="meta promo-code"><strong>Coupon needed:</strong> ${escapeHtml(deal.code)}</div>` : ""}
-        <a class="btn btn-secondary" href="${escapeHtml(deal.link)}" target="_blank" rel="nofollow sponsored noopener">Open deal</a>
+
+        ${couponHtml}
+
+        <a class="btn btn-secondary" href="${escapeHtml(deal.link)}" target="_blank" rel="nofollow sponsored noopener">
+          Open deal
+        </a>
       </div>
     </article>
   `;
