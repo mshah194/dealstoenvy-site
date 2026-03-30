@@ -13,13 +13,17 @@
 
     <a href="index.html" class="logo">Deals<span>ToEnvy</span></a>
 
-    <form class="header-search" action="search.html" method="get">
-      <input
-        type="text"
-        name="q"
-        placeholder="Search Deals, Products, Stores"
-        class="header-search-input"
-      />
+    <form class="header-search" action="search.html" method="get" autocomplete="off">
+      <div class="header-search-wrap">
+        <input
+          type="text"
+          name="q"
+          id="header-search-input"
+          placeholder="Search deals..."
+          class="header-search-input"
+        />
+        <div id="header-search-suggestions" class="header-search-suggestions"></div>
+      </div>
     </form>
 
     <nav class="nav-links">
