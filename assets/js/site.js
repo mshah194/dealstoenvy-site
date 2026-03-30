@@ -249,6 +249,41 @@
 
     initFeaturedSlider(trackId, prevId, nextId);
   }
+  function initFeaturedSlider(trackId, prevId, nextId) {
+  const track = document.getElementById(trackId);
+  const prevBtn = document.getElementById(prevId);
+  const nextBtn = document.getElementById(nextId);
+
+  if (!track || !prevBtn || !nextBtn) return;
+
+  const viewport = track.parentElement;
+
+  function getScrollAmount() {
+    const firstCard = track.querySelector(".mini-card");
+    if (!firstCard) return 300;
+    const gap = 20;
+    return firstCard.offsetWidth + gap;
+  }
+
+  function updateButtons() {
+    const maxScroll = track.scrollWidth - viewport.clientWidth;
+    prevBtn.disabled = track.scrollLeft <= 5;
+    nextBtn.disabled = track.scrollLeft >= maxScroll - 5;
+  }
+
+  prevBtn.addEventListener("click", () => {
+    track.scrollBy({ left: -getScrollAmount(), behavior: "smooth" });
+  });
+
+  nextBtn.addEventListener("click", () => {
+    track.scrollBy({ left: getScrollAmount(), behavior: "smooth" });
+  });
+
+  track.addEventListener("scroll", updateButtons);
+  window.addEventListener("resize", updateButtons);
+
+  updateButtons();
+}
 
   function enableSearch(inputId, containerId) {
     const input = document.getElementById(inputId);
