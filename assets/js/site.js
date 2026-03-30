@@ -284,7 +284,106 @@ const list=byRetailer(deals,retailer);
 const featured=list.filter(d=>d.homepage_feature);
 return featured.length?featured:list;
 }
+function buildSearchableText(deal) {
+  return [
+    deal.title,
+    deal.category,
+    deal.badge,
+    deal.code,
+    deal.note,
+    deal.retailer,
+    deal.status
+  ]
+    .join(" ")
+    .toLowerCase();
+}
 
+function getSearchSuggestions(deals, query) {
+  const q = query.trim().toLowerCase();
+  if (!q) return [];
+
+  return deals
+    .filter(deal => buildSearchableText(deal).includes(q))
+    .slice(0, 8);
+}
+
+function renderHeaderSuggestions(matches, query) {
+  const box = document.getElementById("header-search-suggestions");
+  if (!box) return;
+
+  if (!query.trim() || !matches.length) {
+    box.innerHTML = "";
+    box.classList.remove("show");
+    return;
+  }
+
+  box.innerHTML = matches.map(deal => {
+    const retailer = deal.retailer || "";
+    const price = formatCurrency(deal.price);
+    const oldPrice = formatCurrency(deal.old_price);
+
+    return `
+      <a class="header-search-suggestion" href="search.html?q=${encodeURIComponent(query)}">
+        <div class="header-search-suggestion-title">${escapeHtml(deal.title)}</div>
+        <div class="header-search-suggestion-meta">
+          ${escapeHtml(retailer)}${price ? ` • ${escapeHtml(price)}` : ""}${oldPrice ? ` • Was ${escapeHtml(oldPrice)}` : ""}
+        </div>
+      </a>
+    `;
+  }).join("");
+
+  box.classList.add("show");
+}
+
+function enableHeaderSearchSuggestions(deals) {
+  const input = document.getElementById("header-search-input");
+  const box = document.getElementById("header-search-suggestions");
+  if (!input || !box) return;
+
+  let activeIndex = -1;
+
+  function refreshSuggestions() {
+    const query = input.value || "";
+    const matches = getSearchSuggestions(deals, query);
+    renderHeaderSuggestions(matches, query);
+    activeIndex = -1;
+  }
+
+  input.addEventListener("input", refreshSuggestions);
+
+  input.addEventListener("focus", refreshSuggestions);
+
+  input.addEventListener("keydown", (e) => {
+    const items = Array.from(box.querySelectorAll(".header-search-suggestion"));
+    if (!items.length) return;
+
+    if (e.key === "ArrowDown") {
+      e.preventDefault();
+      activeIndex = (activeIndex + 1) % items.length;
+    } else if (e.key === "ArrowUp") {
+      e.preventDefault();
+      activeIndex = (activeIndex - 1 + items.length) % items.length;
+    } else if (e.key === "Escape") {
+      box.classList.remove("show");
+      activeIndex = -1;
+      return;
+    } else {
+      return;
+    }
+
+    items.forEach((item, idx) => {
+      item.classList.toggle("active", idx === activeIndex);
+    });
+  });
+
+  document.addEventListener("click", (e) => {
+    const wrap = document.querySelector(".header-search-wrap");
+    if (!wrap) return;
+    if (!wrap.contains(e.target)) {
+      box.classList.remove("show");
+    }
+  });
+}
 document.addEventListener("DOMContentLoaded",async()=>{
 
 const payload=await loadDeals();
