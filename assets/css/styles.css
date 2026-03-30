@@ -290,30 +290,36 @@ h1 {
   display: flex;
   align-items: center;
   gap: 12px;
+  width: 100%;
 }
 
 .featured-viewport {
-  overflow: hidden;
   width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.featured-viewport::-webkit-scrollbar {
+  display: none;
 }
 
 .featured-track {
   display: flex;
+  flex-wrap: nowrap;
   gap: 20px;
-  overflow-x: auto;
-  scroll-behavior: smooth;
-  scrollbar-width: none;
+  width: max-content;
   padding: 4px 2px 10px;
 }
 
-.featured-track::-webkit-scrollbar {
-  display: none;
-}
-
 .featured-track .mini-card {
+  flex: 0 0 280px;
+  width: 280px;
   min-width: 280px;
   max-width: 280px;
-  flex: 0 0 280px;
+  margin: 0;
 }
 
 .featured-arrow {
@@ -327,6 +333,8 @@ h1 {
   font-size: 20px;
   font-weight: 700;
   flex: 0 0 auto;
+  z-index: 2;
+  transition: transform 0.15s ease, opacity 0.15s ease;
 }
 
 .featured-arrow:hover {
@@ -336,13 +344,38 @@ h1 {
 .featured-arrow:disabled {
   opacity: 0.35;
   cursor: not-allowed;
+  transform: none;
+}
+
+.featured-arrow-left,
+.featured-arrow-right {
+  align-self: center;
+}
+
+#featured-amazon-grid,
+#featured-walmart-grid {
+  width: 100%;
+}
+
+#featured-amazon-grid .notice,
+#featured-walmart-grid .notice {
+  width: 100%;
 }
 
 @media (max-width: 768px) {
+  .featured-slider {
+    gap: 8px;
+  }
+
+  .featured-track {
+    gap: 16px;
+  }
+
   .featured-track .mini-card {
+    flex: 0 0 240px;
+    width: 240px;
     min-width: 240px;
     max-width: 240px;
-    flex: 0 0 240px;
   }
 
   .featured-arrow {
