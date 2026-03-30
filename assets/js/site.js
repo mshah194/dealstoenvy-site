@@ -401,6 +401,8 @@ renderMiniDeals("featured-walmart-grid",featuredDeals(deals,"Walmart"));
 enableSearch("amazon-search","amazon-deals-grid");
 enableSearch("walmart-search","walmart-deals-grid");
 
+enableHeaderSearchSuggestions(deals);
+
 });
 
 })();
