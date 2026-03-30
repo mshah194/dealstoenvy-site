@@ -8,20 +8,56 @@
   <link rel="stylesheet" href="assets/css/styles.css" />
 </head>
 <body>
-<form class="header-search" action="search.html" method="get" autocomplete="off">
-  <div class="header-search-wrap">
-    <input
-      type="text"
-      name="q"
-      id="header-search-input"
-      placeholder="Search deals..."
-      class="header-search-input"
-    />
-    <button class="header-search-button" type="submit">🔍</button>
-    <div id="header-search-suggestions" class="header-search-suggestions"></div>
-  </div>
-</form>
+  <header class="topbar">
+    <div class="container nav">
+      <a href="index.html" class="logo">Deals<span>ToEnvy</span></a>
+
+      <form class="header-search" action="search.html" method="get" autocomplete="off">
+        <div class="header-search-wrap">
+          <input
+            type="text"
+            name="q"
+            id="header-search-input"
+            placeholder="Search deals..."
+            class="header-search-input"
+          />
+          <button class="header-search-button" type="submit" aria-label="Search">🔍</button>
+          <div id="header-search-suggestions" class="header-search-suggestions"></div>
+        </div>
+      </form>
+
+      <nav class="nav-links">
+        <a href="index.html" class="active">Home</a>
+        <a href="amazon-deals.html">Amazon Deals</a>
+        <a href="walmart-deals.html">Walmart Deals</a>
+      </nav>
+    </div>
+  </header>
+
   <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">Daily Deals Worth Clicking</div>
+          <h1>Find Amazon and Walmart deals fast</h1>
+          <p class="lead">
+            Browse featured picks below or use the search bar above to find deals across the whole site.
+          </p>
+          <div class="button-row">
+            <a class="btn btn-primary" href="amazon-deals.html">Browse Amazon Deals</a>
+            <a class="btn btn-secondary" href="walmart-deals.html">Browse Walmart Deals</a>
+          </div>
+        </div>
+
+        <div class="panel">
+          <h3>Fresh deals, easier browsing</h3>
+          <p>
+            DealsToEnvy pulls active offers from your Google Sheet so your homepage and retailer pages stay current.
+          </p>
+        </div>
+      </div>
+    </section>
+
     <section class="section">
       <div class="container">
         <div class="section-header">
@@ -58,6 +94,7 @@
       </div>
     </div>
   </footer>
+
   <script src="assets/js/sheet-config.js"></script>
   <script src="assets/js/deals.js"></script>
   <script src="assets/js/site.js"></script>
