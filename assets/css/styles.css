@@ -544,3 +544,24 @@ h1 {
     height: 180px;
   }
 }
+/* Header search bar */
+
+.header-search {
+  flex: 1;
+  max-width: 420px;
+  margin: 0 24px;
+}
+
+.header-search-input {
+  width: 100%;
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  font-size: 0.95rem;
+  background: #fff;
+}
+
+.header-search-input:focus {
+  outline: none;
+  border-color: var(--accent);
+}
