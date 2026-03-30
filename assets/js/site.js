@@ -259,10 +259,10 @@
     return deals.filter(d => d.retailer.toLowerCase() === retailer.toLowerCase());
   }
 
-  function featuredDeals(deals, retailer, count) {
+  function featuredDeals(deals, retailer) {
     const matching = byRetailer(deals, retailer);
     const featured = matching.filter(d => d.homepage_feature);
-    return (featured.length ? featured : matching).slice(0, count);
+    return featured.length ? featured : matching;
   }
 
   document.addEventListener("DOMContentLoaded", async () => {
