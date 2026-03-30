@@ -251,37 +251,42 @@
 
   initFeaturedSlider(sliderId, trackId, prevId, nextId);
 }
-  function initFeaturedSlider(trackId, prevId, nextId) {
+  function initFeaturedSlider(sliderId, trackId, prevId, nextId) {
+  const slider = document.getElementById(sliderId);
   const track = document.getElementById(trackId);
   const prevBtn = document.getElementById(prevId);
   const nextBtn = document.getElementById(nextId);
 
-  if (!track || !prevBtn || !nextBtn) return;
+  if (!slider || !track || !prevBtn || !nextBtn) return;
 
-  const viewport = track.parentElement;
+  const viewport = slider.querySelector(".featured-viewport");
 
-  function getScrollAmount() {
+  function getCardWidth() {
     const firstCard = track.querySelector(".mini-card");
-    if (!firstCard) return 300;
-    const gap = 20;
-    return firstCard.offsetWidth + gap;
+    if (!firstCard) return 320;
+
+    const cardStyles = window.getComputedStyle(firstCard);
+    const cardWidth = firstCard.getBoundingClientRect().width;
+    const marginRight = parseFloat(cardStyles.marginRight || "0");
+
+    return cardWidth + marginRight + 20;
   }
 
   function updateButtons() {
-    const maxScroll = track.scrollWidth - viewport.clientWidth;
-    prevBtn.disabled = track.scrollLeft <= 5;
-    nextBtn.disabled = track.scrollLeft >= maxScroll - 5;
+    const maxScroll = viewport.scrollWidth - viewport.clientWidth;
+    prevBtn.disabled = viewport.scrollLeft <= 5;
+    nextBtn.disabled = viewport.scrollLeft >= maxScroll - 5;
   }
 
   prevBtn.addEventListener("click", () => {
-    track.scrollBy({ left: -getScrollAmount(), behavior: "smooth" });
+    viewport.scrollBy({ left: -getCardWidth(), behavior: "smooth" });
   });
 
   nextBtn.addEventListener("click", () => {
-    track.scrollBy({ left: getScrollAmount(), behavior: "smooth" });
+    viewport.scrollBy({ left: getCardWidth(), behavior: "smooth" });
   });
 
-  track.addEventListener("scroll", updateButtons);
+  viewport.addEventListener("scroll", updateButtons);
   window.addEventListener("resize", updateButtons);
 
   updateButtons();
