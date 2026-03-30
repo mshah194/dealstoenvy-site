@@ -426,3 +426,50 @@ h1 {
 .mini-grid {
   grid-template-columns: 1fr;
 }
+.featured-row {
+  width: 100%;
+  max-width: 100%;
+}
+
+.featured-row .featured-slider {
+  width: 100%;
+}
+
+.featured-row .featured-viewport {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.featured-row .featured-viewport::-webkit-scrollbar {
+  display: none;
+}
+
+.featured-row .featured-track {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 20px;
+  width: max-content;
+  padding: 4px 2px 10px;
+}
+
+.featured-row .mini-card {
+  flex: 0 0 280px;
+  width: 280px;
+  min-width: 280px;
+  max-width: 280px;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .featured-row .mini-card {
+    flex: 0 0 240px;
+    width: 240px;
+    min-width: 240px;
+    max-width: 240px;
+  }
+}
