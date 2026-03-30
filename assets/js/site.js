@@ -403,6 +403,8 @@ enableSearch("walmart-search","walmart-deals-grid");
 
 enableHeaderSearchSuggestions(deals);
 
+setLastUpdated();
+
 });
 
 })();
