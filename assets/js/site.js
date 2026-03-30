@@ -136,26 +136,32 @@ function dealCard(deal) {
   const oldPrice = formatCurrency(deal.old_price);
 
   return `
-  <article class="card deal-card" data-title="${escapeHtml(searchable)}">
-    <img class="card-media" src="${escapeHtml(deal.image)}" alt="${escapeHtml(deal.title)}">
-    <div class="card-body">
-
-      <span class="badge">${escapeHtml(deal.badge || deal.category)}</span>
-      <h3>${escapeHtml(deal.title)}</h3>
-
-      <div class="price-row">
-        <span class="price">${price}</span>
-        ${oldPrice ? `<span class="old-price">${oldPrice}</span>` : ""}
+    <article class="card deal-card deal-card-horizontal" data-title="${escapeHtml(searchable)}">
+      <div class="deal-card-image-wrap">
+        <img class="card-media deal-card-image" src="${escapeHtml(deal.image || "https://via.placeholder.com/800x600?text=Deal")}" alt="${escapeHtml(deal.title)}">
       </div>
 
-      ${promoMarkup(deal, "promo-code")}
+      <div class="card-body deal-card-body-horizontal">
+        <div class="deal-card-top">
+          <span class="badge">${escapeHtml(deal.badge || deal.category)}</span>
+          <h3>${escapeHtml(deal.title)}</h3>
+        </div>
 
-      <a class="btn btn-primary" href="${escapeHtml(deal.link)}" target="_blank" rel="nofollow sponsored noopener">
-        View deal
-      </a>
+        <div class="price-row">
+          <span class="price">${price}</span>
+          ${oldPrice ? `<span class="old-price">${oldPrice}</span>` : ""}
+        </div>
 
-    </div>
-  </article>
+        ${promoMarkup(deal, "promo-code")}
+        ${deal.note ? `<p class="deal-note">${escapeHtml(deal.note)}</p>` : ""}
+
+        <div class="deal-card-actions">
+          <a class="btn btn-primary" href="${escapeHtml(deal.link)}" target="_blank" rel="nofollow sponsored noopener">
+            View deal
+          </a>
+        </div>
+      </div>
+    </article>
   `;
 }
 function enableSearch(inputId, containerId) {
