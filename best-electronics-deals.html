@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Best Electronics Deals | DealsToEnvy</title>
+  <meta name="description" content="Best electronics deals from Amazon and Walmart including headphones, TVs, smart devices, laptops, accessories, and more." />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+
+<body>
+
+<header class="topbar">
+  <div class="container nav">
+    <a href="index.html" class="logo">Deals<span>ToEnvy</span></a>
+
+    <form class="header-search" action="search.html" method="get" autocomplete="off">
+      <div class="header-search-wrap">
+        <input
+          type="text"
+          name="q"
+          id="header-search-input"
+          placeholder="Search deals..."
+          class="header-search-input"
+        />
+        <button class="header-search-button" type="submit" aria-label="Search">🔍</button>
+        <div id="header-search-suggestions" class="header-search-suggestions"></div>
+      </div>
+    </form>
+
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="amazon-deals.html">Amazon Deals</a>
+      <a href="walmart-deals.html">Walmart Deals</a>
+      <a href="best-of.html">Best Of</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<section class="page-hero">
+  <div class="container">
+    <div class="page-shell">
+
+      <div class="section-header">
+        <h1 class="page-title">Best Electronics Deals</h1>
+        <div class="small">Curated Amazon + Walmart electronics finds</div>
+      </div>
+
+      <div class="article-layout">
+
+        <article class="article-content">
+
+          <h2>Best Electronics Deals Right Now</h2>
+
+          <p>
+            Looking for the best electronics deals available today? This page highlights strong deals from Amazon and Walmart across popular tech categories including headphones, smart home devices, TVs, tablets, monitors, chargers, and everyday accessories.
+          </p>
+
+          <p>
+            Instead of sorting through endless listings, you can quickly scan a curated selection of electronics deals worth checking. We regularly refresh this page as new discounts appear and older deals expire.
+          </p>
+
+          <h3>Popular Electronics Categories Often Discounted</h3>
+
+          <p>Many of the deals featured here come from categories such as:</p>
+
+          <ul>
+            <li>Headphones, earbuds, and speakers</li>
+            <li>TVs, streaming devices, and monitors</li>
+            <li>Smart home devices and security cameras</li>
+            <li>Laptops, tablets, and computer accessories</li>
+            <li>Phone chargers, cables, and power banks</li>
+            <li>Gaming accessories and tech gadgets</li>
+          </ul>
+
+          <h3>How to Get the Best Electronics Deals</h3>
+
+          <p>
+            Electronics deals often move quickly, especially during flash sales and limited coupon events. Some discounts require clipping a coupon on the retailer page, while others may require entering a promo code at checkout.
+          </p>
+
+          <p>
+            Before completing your order, make sure to double-check whether a listed coupon or promo code needs to be applied so you get the full savings.
+          </p>
+
+          <h3>Current Featured Electronics Deals</h3>
+
+          <p>
+            The deals shown on the right are currently active electronics deals selected from our tracker. These are filtered specifically for the electronics category so you can focus on current tech savings in one place.
+          </p>
+
+        </article>
+
+        <aside class="article-deals">
+
+          <h3 class="deal-sidebar-title">Featured Electronics Deals</h3>
+
+          <div class="deal-sidebar-wrapper">
+
+            <button class="deal-scroll-btn deal-scroll-up"
+              type="button"
+              onclick="scrollDeals(-1)">
+              ▲
+            </button>
+
+            <div class="deal-sidebar-viewport" id="deal-sidebar-viewport">
+              <div id="article-deals-grid" class="deal-sidebar-grid"></div>
+            </div>
+
+            <button class="deal-scroll-btn deal-scroll-down"
+              type="button"
+              onclick="scrollDeals(1)">
+              ▼
+            </button>
+
+          </div>
+
+        </aside>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="container footer-grid">
+    <div>
+      <h3>DealsToEnvy</h3>
+      <p>Amazing Deals Right At Your Fingertips</p>
+    </div>
+
+    <div class="footer-links">
+      <a href="amazon-deals.html">Amazon Deals</a>
+      <a href="walmart-deals.html">Walmart Deals</a>
+      <a href="affiliate-disclosure.html">Affiliate Disclosure</a>
+      <a href="privacy-policy.html">Privacy Policy</a>
+      <a href="terms-and-conditions.html">Terms &amp; Conditions</a>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/sheet-config.js"></script>
+
+<script>
+window.DEALS_ARTICLE_CONFIG = {
+  category: "electronics"
+};
+</script>
+
+<script src="assets/js/article-page.js"></script>
+
+<script>
+function scrollDeals(direction) {
+  const viewport = document.getElementById("deal-sidebar-viewport");
+  if (!viewport) return;
+
+  viewport.scrollBy({
+    top: direction * 220,
+    behavior: "smooth"
+  });
+}
+
+function updateDealScrollButtons() {
+  const viewport = document.getElementById("deal-sidebar-viewport");
+  const upBtn = document.querySelector(".deal-scroll-up");
+  const downBtn = document.querySelector(".deal-scroll-down");
+
+  if (!viewport || !upBtn || !downBtn) return;
+
+  const maxScroll = viewport.scrollHeight - viewport.clientHeight;
+  const canScroll = maxScroll > 5;
+
+  upBtn.style.display = canScroll ? "" : "none";
+  downBtn.style.display = canScroll ? "" : "none";
+
+  upBtn.disabled = viewport.scrollTop <= 5;
+  downBtn.disabled = viewport.scrollTop >= maxScroll - 5;
+}
+
+window.addEventListener("load", () => {
+  setTimeout(updateDealScrollButtons, 300);
+
+  const viewport = document.getElementById("deal-sidebar-viewport");
+  if (viewport) {
+    viewport.addEventListener("scroll", updateDealScrollButtons);
+  }
+});
+
+window.addEventListener("resize", updateDealScrollButtons);
+</script>
+
+</body>
+</html>
