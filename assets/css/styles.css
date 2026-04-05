@@ -957,3 +957,108 @@ h1 {
     font-size: 1.4rem;
   }
 }
+/* Best Of hub page */
+
+.best-of-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.best-of-card {
+  display: block;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: var(--shadow-soft);
+}
+
+.best-of-card h3 {
+  margin: 0 0 8px;
+}
+
+.best-of-card p {
+  margin: 0;
+  color: var(--muted);
+}
+
+/* Homepage Best Of right rail */
+
+.home-split-layout {
+  display: grid;
+  grid-template-columns: 1.45fr 0.8fr;
+  gap: 28px;
+  align-items: start;
+}
+
+.home-main-column {
+  min-width: 0;
+}
+
+.home-feature-intro {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 18px;
+  color: #334155;
+  box-shadow: var(--shadow-soft);
+}
+
+.home-bestof-rail {
+  min-width: 0;
+}
+
+.home-bestof-box {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 18px;
+  box-shadow: var(--shadow);
+  position: sticky;
+  top: 96px;
+}
+
+.home-bestof-list {
+  display: grid;
+  gap: 12px;
+}
+
+.home-bestof-item {
+  display: block;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 14px;
+  background: #fff;
+}
+
+.home-bestof-item strong {
+  display: block;
+  margin-bottom: 4px;
+}
+
+.home-bestof-item span {
+  display: block;
+  color: var(--muted);
+  font-size: 0.92rem;
+  line-height: 1.4;
+}
+
+.home-bestof-item:hover,
+.best-of-card:hover {
+  background: #fff7f8;
+}
+
+@media (max-width: 940px) {
+  .best-of-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .home-split-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .home-bestof-box {
+    position: static;
+  }
+}
