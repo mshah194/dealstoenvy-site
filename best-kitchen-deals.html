@@ -138,7 +138,7 @@
 
 <script>
 function scrollDeals(direction) {
-  const viewport = document.querySelector(".deal-sidebar-viewport");
+  const viewport = document.getElementById("deal-sidebar-viewport");
   if (!viewport) return;
 
   viewport.scrollBy({
@@ -148,7 +148,7 @@ function scrollDeals(direction) {
 }
 
 function updateDealScrollButtons() {
-  const viewport = document.querySelector(".deal-sidebar-viewport");
+  const viewport = document.getElementById("deal-sidebar-viewport");
   const upBtn = document.querySelector(".deal-scroll-up");
   const downBtn = document.querySelector(".deal-scroll-down");
 
@@ -167,7 +167,7 @@ function updateDealScrollButtons() {
 window.addEventListener("load", () => {
   updateDealScrollButtons();
 
-  const viewport = document.querySelector(".deal-sidebar-viewport");
+  const viewport = document.getElementById("deal-sidebar-viewport");
   if (viewport) {
     viewport.addEventListener("scroll", updateDealScrollButtons);
   }
