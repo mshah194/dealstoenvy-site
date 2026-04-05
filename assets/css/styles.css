@@ -878,8 +878,6 @@ h1 {
   }
 
 }
-/* ARTICLE SIDEBAR DEAL LIST */
-
 .article-deals {
   position: sticky;
   top: 100px;
@@ -896,7 +894,7 @@ h1 {
 }
 
 .deal-sidebar-viewport {
-  max-height: 520px; /* change this number to control when scrolling starts */
+  max-height: 520px;
   overflow-y: auto;
   padding-right: 6px;
   scroll-behavior: smooth;
@@ -915,13 +913,18 @@ h1 {
   display: flex;
   flex-direction: column;
   gap: 14px;
+  min-height: 40px;
 }
 
-/* keep sidebar cards compact, but not squished */
+/* compact sidebar cards */
 .article-deals .deal-card-horizontal {
   display: grid;
   grid-template-columns: 90px 1fr;
   align-items: stretch;
+}
+
+.article-deals .deal-card-image-wrap {
+  padding: 8px;
 }
 
 .article-deals .deal-card-image {
