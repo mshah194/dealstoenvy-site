@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Best Kitchen Deals | DealsToEnvy</title>
+  <meta name="description" content="Best kitchen deals from Amazon and Walmart, updated regularly on DealsToEnvy." />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="container nav">
+      <a href="index.html" class="logo">Deals<span>ToEnvy</span></a>
+
+      <form class="header-search" action="search.html" method="get" autocomplete="off">
+        <div class="header-search-wrap">
+          <input
+            type="text"
+            name="q"
+            id="header-search-input"
+            placeholder="Search deals..."
+            class="header-search-input"
+          />
+          <button class="header-search-button" type="submit" aria-label="Search">🔍</button>
+          <div id="header-search-suggestions" class="header-search-suggestions"></div>
+        </div>
+      </form>
+
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="amazon-deals.html">Amazon Deals</a>
+        <a href="walmart-deals.html">Walmart Deals</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <div class="page-shell">
+          <div class="section-header">
+            <h1 class="page-title">Best Kitchen Deals</h1>
+            <div class="small">Amazon + Walmart kitchen deals in one place</div>
+          </div>
+
+          <p class="lead">
+            We track the best kitchen deals across Amazon and Walmart, including air fryers,
+            coffee makers, cookware, storage, and other home kitchen essentials.
+          </p>
+
+          <div id="article-deals-grid" class="cards"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <h3>DealsToEnvy</h3>
+        <p>Amazing Deals Right At Your Fingertips</p>
+      </div>
+      <div class="footer-links">
+        <a href="amazon-deals.html">Amazon Deals</a>
+        <a href="walmart-deals.html">Walmart Deals</a>
+        <a href="affiliate-disclosure.html">Affiliate Disclosure</a>
+        <a href="privacy-policy.html">Privacy Policy</a>
+        <a href="terms-and-conditions.html">Terms &amp; Conditions</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/sheet-config.js"></script>
+  <script>
+    window.DEALS_ARTICLE_CONFIG = {
+      category: "kitchen"
+    };
+  </script>
+  <script src="assets/js/article-page.js"></script>
+</body>
+</html>
