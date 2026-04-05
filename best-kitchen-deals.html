@@ -136,28 +136,44 @@
     </div>
   </footer>
 
-  <script src="assets/js/sheet-config.js"></script>
-  <script>
-    window.DEALS_ARTICLE_CONFIG = {
-      category: "kitchen"
-    };
-  </script>
-  <script src="assets/js/article-page.js"></script>
-  <script>
-
+<script>
 function scrollDeals(direction) {
+  const viewport = document.querySelector(".deal-sidebar-viewport");
+  if (!viewport) return;
 
-  const grid = document.getElementById("article-deals-grid");
-
-  const scrollAmount = 220;
-
-  grid.scrollBy({
-    top: direction * scrollAmount,
+  viewport.scrollBy({
+    top: direction * 220,
     behavior: "smooth"
   });
-
 }
 
+function updateDealScrollButtons() {
+  const viewport = document.querySelector(".deal-sidebar-viewport");
+  const upBtn = document.querySelector(".deal-scroll-up");
+  const downBtn = document.querySelector(".deal-scroll-down");
+
+  if (!viewport || !upBtn || !downBtn) return;
+
+  const maxScroll = viewport.scrollHeight - viewport.clientHeight;
+  const canScroll = maxScroll > 5;
+
+  upBtn.style.display = canScroll ? "" : "none";
+  downBtn.style.display = canScroll ? "" : "none";
+
+  upBtn.disabled = viewport.scrollTop <= 5;
+  downBtn.disabled = viewport.scrollTop >= maxScroll - 5;
+}
+
+window.addEventListener("load", () => {
+  updateDealScrollButtons();
+
+  const viewport = document.querySelector(".deal-sidebar-viewport");
+  if (viewport) {
+    viewport.addEventListener("scroll", updateDealScrollButtons);
+  }
+});
+
+window.addEventListener("resize", updateDealScrollButtons);
 </script>
 </body>
 </html>
