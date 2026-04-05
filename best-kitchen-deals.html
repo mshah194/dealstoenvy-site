@@ -145,5 +145,21 @@
     };
   </script>
   <script src="assets/js/article-page.js"></script>
+  <script>
+
+function scrollDeals(direction) {
+
+  const grid = document.getElementById("article-deals-grid");
+
+  const scrollAmount = 220;
+
+  grid.scrollBy({
+    top: direction * scrollAmount,
+    behavior: "smooth"
+  });
+
+}
+
+</script>
 </body>
 </html>
