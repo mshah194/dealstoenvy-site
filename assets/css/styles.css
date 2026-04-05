@@ -805,3 +805,76 @@ h1 {
     font-size: 1.4rem;
   }
 }
+/* ARTICLE + DEAL SIDEBAR LAYOUT */
+
+.article-layout {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 40px;
+  align-items: start;
+}
+
+/* ARTICLE TEXT */
+
+.article-content {
+  max-width: 760px;
+}
+
+.article-content h2,
+.article-content h3 {
+  margin-top: 24px;
+}
+
+.article-content p {
+  margin-bottom: 16px;
+  line-height: 1.7;
+}
+
+.article-content ul {
+  padding-left: 20px;
+}
+
+/* DEAL SIDEBAR */
+
+.article-deals {
+  position: sticky;
+  top: 100px;
+}
+
+.deal-sidebar-title {
+  margin-bottom: 12px;
+}
+
+.deal-sidebar-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* smaller cards in sidebar */
+
+.article-deals .deal-card-horizontal {
+  grid-template-columns: 90px 1fr;
+}
+
+.article-deals .deal-card-image {
+  height: 80px;
+}
+
+.article-deals .deal-card-body-horizontal {
+  padding: 10px 12px;
+}
+
+/* MOBILE */
+
+@media (max-width: 900px) {
+
+  .article-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .article-deals {
+    position: static;
+  }
+
+}
