@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Best Home Deals | DealsToEnvy</title>
+  <meta name="description" content="Best home deals from Amazon and Walmart including furniture, storage, decor, and everyday household items." />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+
+<body>
+
+<header class="topbar">
+  <div class="container nav">
+    <a href="index.html" class="logo">Deals<span>ToEnvy</span></a>
+
+    <form class="header-search" action="search.html" method="get" autocomplete="off">
+      <div class="header-search-wrap">
+        <input
+          type="text"
+          name="q"
+          id="header-search-input"
+          placeholder="Search deals..."
+          class="header-search-input"
+        />
+        <button class="header-search-button" type="submit" aria-label="Search">🔍</button>
+        <div id="header-search-suggestions" class="header-search-suggestions"></div>
+      </div>
+    </form>
+
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="amazon-deals.html">Amazon Deals</a>
+      <a href="walmart-deals.html">Walmart Deals</a>
+      <a href="best-of.html">Best Of</a>
+    </nav>
+  </div>
+</header>
+
+
+<main>
+
+<section class="page-hero">
+  <div class="container">
+    <div class="page-shell">
+
+      <div class="section-header">
+        <h1 class="page-title">Best Home Deals</h1>
+        <div class="small">Curated Amazon + Walmart home finds</div>
+      </div>
+
+      <div class="article-layout">
+
+        <!-- LEFT ARTICLE CONTENT -->
+
+        <article class="article-content">
+
+          <h2>Best Home Deals Right Now</h2>
+
+          <p>
+            Looking for great deals on home essentials? This page highlights some of the
+            best home deals currently available from Amazon and Walmart. From furniture
+            and home decor to storage solutions and cleaning tools, we track deals that
+            can help improve your living space without overspending.
+          </p>
+
+          <p>
+            Instead of browsing thousands of listings, you can quickly see curated deals
+            that are worth considering. We update this page regularly as new discounts
+            appear and older deals expire.
+          </p>
+
+          <h3>Popular Home Deals You’ll Often Find</h3>
+
+          <p>Many of the deals featured here fall into popular home categories such as:</p>
+
+          <ul>
+            <li>Storage bins and organization systems</li>
+            <li>Furniture and home decor</li>
+            <li>Cleaning supplies and tools</li>
+            <li>Bedding and home textiles</li>
+            <li>Lighting and smart home accessories</li>
+            <li>Bathroom and laundry essentials</li>
+          </ul>
+
+          <h3>How to Get the Best Home Deals</h3>
+
+          <p>
+            Retailers frequently run limited-time discounts on home products. Some deals
+            require clipping a coupon on the product page, while others may require a
+            promo code during checkout.
+          </p>
+
+          <p>
+            When you see a coupon or promo code listed next to a deal, make sure to apply
+            it to unlock the full discount before completing your purchase.
+          </p>
+
+          <h3>Current Featured Home Deals</h3>
+
+          <p>
+            The deals displayed on the right are currently active home deals selected
+            from our deal tracker. These deals are filtered specifically for the home
+            category.
+          </p>
+
+        </article>
+
+
+        <!-- RIGHT SIDEBAR DEALS -->
+
+        <aside class="article-deals">
+
+          <h3 class="deal-sidebar-title">Featured Home Deals</h3>
+
+          <div class="deal-sidebar-wrapper">
+
+            <button class="deal-scroll-btn deal-scroll-up"
+              type="button"
+              onclick="scrollDeals(-1)">
+              ▲
+            </button>
+
+            <div class="deal-sidebar-viewport" id="deal-sidebar-viewport">
+              <div id="article-deals-grid" class="deal-sidebar-grid"></div>
+            </div>
+
+            <button class="deal-scroll-btn deal-scroll-down"
+              type="button"
+              onclick="scrollDeals(1)">
+              ▼
+            </button>
+
+          </div>
+
+        </aside>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+
+<footer class="footer">
+  <div class="container footer-grid">
+    <div>
+      <h3>DealsToEnvy</h3>
+      <p>Amazing Deals Right At Your Fingertips</p>
+    </div>
+
+    <div class="footer-links">
+      <a href="amazon-deals.html">Amazon Deals</a>
+      <a href="walmart-deals.html">Walmart Deals</a>
+      <a href="affiliate-disclosure.html">Affiliate Disclosure</a>
+      <a href="privacy-policy.html">Privacy Policy</a>
+      <a href="terms-and-conditions.html">Terms &amp; Conditions</a>
+    </div>
+  </div>
+</footer>
+
+
+<script src="assets/js/sheet-config.js"></script>
+
+<script>
+window.DEALS_ARTICLE_CONFIG = {
+  category: "home"
+};
+</script>
+
+<script src="assets/js/article-page.js"></script>
+
+
+<script>
+
+function scrollDeals(direction) {
+
+  const viewport = document.getElementById("deal-sidebar-viewport");
+  if (!viewport) return;
+
+  viewport.scrollBy({
+    top: direction * 220,
+    behavior: "smooth"
+  });
+
+}
+
+function updateDealScrollButtons() {
+
+  const viewport = document.getElementById("deal-sidebar-viewport");
+  const upBtn = document.querySelector(".deal-scroll-up");
+  const downBtn = document.querySelector(".deal-scroll-down");
+
+  if (!viewport || !upBtn || !downBtn) return;
+
+  const maxScroll = viewport.scrollHeight - viewport.clientHeight;
+  const canScroll = maxScroll > 5;
+
+  upBtn.style.display = canScroll ? "" : "none";
+  downBtn.style.display = canScroll ? "" : "none";
+
+  upBtn.disabled = viewport.scrollTop <= 5;
+  downBtn.disabled = viewport.scrollTop >= maxScroll - 5;
+
+}
+
+window.addEventListener("load", () => {
+
+  setTimeout(updateDealScrollButtons, 300);
+
+  const viewport = document.getElementById("deal-sidebar-viewport");
+
+  if (viewport) {
+    viewport.addEventListener("scroll", updateDealScrollButtons);
+  }
+
+});
+
+window.addEventListener("resize", updateDealScrollButtons);
+
+</script>
+
+</body>
+</html>
