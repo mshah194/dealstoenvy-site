@@ -878,3 +878,42 @@ h1 {
   }
 
 }
+/* DEAL SIDEBAR SCROLL */
+
+.deal-sidebar-wrapper {
+  position: relative;
+}
+
+.deal-sidebar-grid {
+  max-height: 520px;
+  overflow-y: auto;
+  padding-right: 6px;
+}
+
+/* hide default scrollbar on some browsers */
+.deal-sidebar-grid::-webkit-scrollbar {
+  width: 6px;
+}
+
+.deal-sidebar-grid::-webkit-scrollbar-thumb {
+  background: #cbd5f5;
+  border-radius: 6px;
+}
+
+/* scroll buttons */
+
+.deal-scroll-btn {
+  width: 100%;
+  border: none;
+  background: #f1f5f9;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 6px;
+  border-radius: 8px;
+  margin: 6px 0;
+  transition: background 0.2s ease;
+}
+
+.deal-scroll-btn:hover {
+  background: #e2e8f0;
+}
