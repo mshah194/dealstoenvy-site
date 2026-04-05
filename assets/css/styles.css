@@ -967,7 +967,7 @@ h1 {
 
 .best-of-card {
   display: block;
-  background: var(--surface);
+  background: linear-gradient(135deg,#fff1f2,#ffffff);
   border: 1px solid var(--border);
   border-radius: 20px;
   padding: 20px;
