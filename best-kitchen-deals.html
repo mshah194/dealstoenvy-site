@@ -44,76 +44,68 @@
           </div>
 
           <div class="article-layout">
+            <article class="article-content">
+              <h2>Best Kitchen Deals Right Now</h2>
 
-  <!-- LEFT SIDE ARTICLE -->
-  <article class="article-content">
+              <p>
+                Kitchen upgrades don’t have to be expensive. On this page we highlight some
+                of the best deals currently available on kitchen appliances, cookware,
+                gadgets, and storage solutions from both Amazon and Walmart.
+              </p>
 
-    <h2>Best Kitchen Deals Right Now</h2>
+              <p>
+                Instead of browsing hundreds of listings, you can quickly see a curated
+                selection of deals worth considering. We regularly update this list when
+                new discounts appear or when older deals expire.
+              </p>
 
-    <p>
-      Kitchen upgrades don’t have to be expensive. On this page we highlight some
-      of the best deals currently available on kitchen appliances, cookware,
-      gadgets, and storage solutions from both Amazon and Walmart.
-    </p>
+              <h3>Popular Kitchen Items Often Discounted</h3>
 
-    <p>
-      Instead of browsing hundreds of listings, you can quickly see a curated
-      selection of deals worth considering. We regularly update this list when
-      new discounts appear or when older deals expire.
-    </p>
+              <p>Many of the deals featured here fall into popular kitchen categories such as:</p>
 
-    <h3>Popular Kitchen Items Often Discounted</h3>
+              <ul>
+                <li>Air fryers and toaster ovens</li>
+                <li>Coffee makers and espresso machines</li>
+                <li>Blenders and food processors</li>
+                <li>Cookware and bakeware sets</li>
+                <li>Food storage containers</li>
+                <li>Kitchen organization products</li>
+              </ul>
 
-    <p>Many of the deals featured here fall into popular kitchen categories such as:</p>
+              <h3>Tips for Finding the Best Kitchen Deals</h3>
 
-    <ul>
-      <li>Air fryers and toaster ovens</li>
-      <li>Coffee makers and espresso machines</li>
-      <li>Blenders and food processors</li>
-      <li>Cookware and bakeware sets</li>
-      <li>Food storage containers</li>
-      <li>Kitchen organization products</li>
-    </ul>
+              <p>
+                Many retailers offer limited-time coupons or lightning deals on kitchen
+                items. If you see a product marked with a coupon or promo code, make sure
+                to apply it before checkout to get the full savings.
+              </p>
 
-    <h3>Tips for Finding the Best Kitchen Deals</h3>
+              <p>
+                Because deals can change quickly, it’s worth checking this page regularly
+                to see the newest discounts.
+              </p>
 
-    <p>
-      Many retailers offer limited-time coupons or lightning deals on kitchen
-      items. If you see a product marked with a coupon or promo code, make sure
-      to apply it before checkout to get the full savings.
-    </p>
+              <h3>Current Featured Kitchen Deals</h3>
 
-    <p>
-      Because deals can change quickly, it’s worth checking this page regularly
-      to see the newest discounts.
-    </p>
+              <p>
+                The deals shown on the right are currently active kitchen deals selected
+                from our deal tracker.
+              </p>
+            </article>
 
-    <h3>Current Featured Kitchen Deals</h3>
+            <aside class="article-deals">
+              <h3 class="deal-sidebar-title">Featured Kitchen Deals</h3>
 
-    <p>
-      The deals shown on the right are currently active kitchen deals selected
-      from our deal tracker.
-    </p>
+              <div class="deal-sidebar-wrapper">
+                <button class="deal-scroll-btn deal-scroll-up" type="button" onclick="scrollDeals(-1)">▲</button>
 
-  </article>
+                <div class="deal-sidebar-viewport" id="deal-sidebar-viewport">
+                  <div id="article-deals-grid" class="deal-sidebar-grid"></div>
+                </div>
 
-
-  <!-- RIGHT SIDE DEAL LIST -->
-<aside class="article-deals">
-  <h3 class="deal-sidebar-title">Featured Kitchen Deals</h3>
-
-  <div class="deal-sidebar-wrapper">
-    <button class="deal-scroll-btn deal-scroll-up" type="button" onclick="scrollDeals(-1)">▲</button>
-
-    <div class="deal-sidebar-viewport" id="deal-sidebar-viewport">
-      <div id="article-deals-grid" class="deal-sidebar-grid"></div>
-    </div>
-
-    <button class="deal-scroll-btn deal-scroll-down" type="button" onclick="scrollDeals(1)">▼</button>
-  </div>
-</aside>
-
-</div>
+                <button class="deal-scroll-btn deal-scroll-down" type="button" onclick="scrollDeals(1)">▼</button>
+              </div>
+            </aside>
           </div>
         </div>
       </div>
@@ -136,44 +128,52 @@
     </div>
   </footer>
 
-<script>
-function scrollDeals(direction) {
-  const viewport = document.getElementById("deal-sidebar-viewport");
-  if (!viewport) return;
+  <script src="assets/js/sheet-config.js"></script>
+  <script>
+    window.DEALS_ARTICLE_CONFIG = {
+      category: "kitchen"
+    };
+  </script>
+  <script src="assets/js/article-page.js"></script>
 
-  viewport.scrollBy({
-    top: direction * 220,
-    behavior: "smooth"
-  });
-}
+  <script>
+    function scrollDeals(direction) {
+      const viewport = document.getElementById("deal-sidebar-viewport");
+      if (!viewport) return;
 
-function updateDealScrollButtons() {
-  const viewport = document.getElementById("deal-sidebar-viewport");
-  const upBtn = document.querySelector(".deal-scroll-up");
-  const downBtn = document.querySelector(".deal-scroll-down");
+      viewport.scrollBy({
+        top: direction * 220,
+        behavior: "smooth"
+      });
+    }
 
-  if (!viewport || !upBtn || !downBtn) return;
+    function updateDealScrollButtons() {
+      const viewport = document.getElementById("deal-sidebar-viewport");
+      const upBtn = document.querySelector(".deal-scroll-up");
+      const downBtn = document.querySelector(".deal-scroll-down");
 
-  const maxScroll = viewport.scrollHeight - viewport.clientHeight;
-  const canScroll = maxScroll > 5;
+      if (!viewport || !upBtn || !downBtn) return;
 
-  upBtn.style.display = canScroll ? "" : "none";
-  downBtn.style.display = canScroll ? "" : "none";
+      const maxScroll = viewport.scrollHeight - viewport.clientHeight;
+      const canScroll = maxScroll > 5;
 
-  upBtn.disabled = viewport.scrollTop <= 5;
-  downBtn.disabled = viewport.scrollTop >= maxScroll - 5;
-}
+      upBtn.style.display = canScroll ? "" : "none";
+      downBtn.style.display = canScroll ? "" : "none";
 
-window.addEventListener("load", () => {
-  updateDealScrollButtons();
+      upBtn.disabled = viewport.scrollTop <= 5;
+      downBtn.disabled = viewport.scrollTop >= maxScroll - 5;
+    }
 
-  const viewport = document.getElementById("deal-sidebar-viewport");
-  if (viewport) {
-    viewport.addEventListener("scroll", updateDealScrollButtons);
-  }
-});
+    window.addEventListener("load", () => {
+      setTimeout(updateDealScrollButtons, 300);
 
-window.addEventListener("resize", updateDealScrollButtons);
-</script>
+      const viewport = document.getElementById("deal-sidebar-viewport");
+      if (viewport) {
+        viewport.addEventListener("scroll", updateDealScrollButtons);
+      }
+    });
+
+    window.addEventListener("resize", updateDealScrollButtons);
+  </script>
 </body>
 </html>
