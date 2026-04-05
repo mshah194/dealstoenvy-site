@@ -100,20 +100,18 @@
 
   <!-- RIGHT SIDE DEAL LIST -->
   <aside class="article-deals">
-
   <h3 class="deal-sidebar-title">Featured Kitchen Deals</h3>
 
   <div class="deal-sidebar-wrapper">
+    <button class="deal-scroll-btn deal-scroll-up" type="button" onclick="scrollDeals(-1)">▲</button>
 
-    <button class="deal-scroll-btn deal-scroll-up" onclick="scrollDeals(-1)">▲</button>
+    <div class="deal-sidebar-viewport">
+      <div id="article-deals-grid" class="deal-sidebar-grid"></div>
+    </div>
 
-    <div id="article-deals-grid" class="deal-sidebar-grid"></div>
-
-    <button class="deal-scroll-btn deal-scroll-down" onclick="scrollDeals(1)">▼</button>
-
+    <button class="deal-scroll-btn deal-scroll-down" type="button" onclick="scrollDeals(1)">▼</button>
   </div>
-
-  </aside>
+</aside>
 
 </div>
           </div>
